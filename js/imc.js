@@ -13,33 +13,66 @@ for (i = 0; i < pacientes.length; i++) {
     var tdAltura = paciente.querySelector(".info-altura");
     var altura = tdAltura.textContent;
 
-    var campo_imc = paciente.querySelector(".info-imc");
+    var tdImc = paciente.querySelector(".info-imc");
 
-    var peso_valido = true;
-    var altura_valida = true;
+    var peso_valido = validaPeso(peso);
+    var altura_valida = validaAltura(altura);
 
-    if (peso <= 0 || peso >= 1000) {
+    // Validação de Peso e Altura
+    if (!peso_valido) {
         //alert("peso invalido");
         console.log("Peso Invalido!");
         peso_valido = false;
-        campo_imc.textContent = ("Peso Invalido!");
+        tdImc.textContent = ("Peso Invalido!");
         paciente.classList.add("paciente-invalido");
     }
-    if (altura <= 0 || altura >= 3.0) {
+    if (!altura_valida) {
         //alert("altura invalida");
-        console.log("Peso Invalido!");
+        console.log("Altura Invalida!");
         altura_valida = false;
-        campo_imc.textContent = ("Altura Invalida!");
+        tdImc.textContent = ("Altura Invalida!");
         paciente.classList.add("paciente-invalido");
     }
 
+    // Calculo do IMC
     if (peso_valido && altura_valida) {
-        var imc = peso / (altura * altura);
-        campo_imc.textContent = imc.toFixed(2);
-    } else {
-        tdImc.textContent = "Altura e/ou peso inválidos!"
+        // sendo valido, passa os valores pra função
+        var imc = calculaImc(peso, altura);
+        tdImc.textContent = imc;
     }
 }
+
+/* Area de Funções */
+
+//função que valida peso
+function validaPeso(peso) {
+    if (peso >= 0 && peso <= 1000) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//função que valida altura
+function validaAltura(altura) {
+    if (altura >= 0 && altura <= 2.5) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// função que calcula IMC
+function calculaImc(peso, altura) {
+    // inicia a variavel de calculo com 0, faz o calculo, e retorna pro tdImc
+    var imc = 0;
+
+    imc = peso / (altura * altura);
+
+    return imc.toFixed(2);
+}
+
+
 
 
 
