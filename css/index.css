@@ -76,6 +76,11 @@ label {
 	margin-bottom: .2em;
 }
 
+#tabela-de-pacientes {
+	margin: 5px 0;
+	padding: 1px;
+}
+
 .campo {
 	margin: 0;
 	padding-bottom: 1em;
@@ -140,4 +145,36 @@ button[disabled=disabled], button:disabled {
 	color: red;
 	text-shadow: black;
 	font-weight: bold;
+}
+
+.sumir-devagar {
+	background-color: rgb(255, 0, 0);
+	opacity: 0;
+	transition: 2s;
+}
+
+#filtrar-tabela {
+	margin-bottom: 5px;
+	width: 200px;
+	height: 30px;
+	padding: 2px;
+}
+
+.invisivel {
+	display: none;
+	opacity: 0;
+	transition: 1.5s;
+}
+
+#erro-ajax {
+	position: relative;
+	color: red;
+	font-size: 1.5em;
+	font-weight: bold;
+	top: -50px;
+	left: 180px;
+	transform: translate(100px, 10px);
+	background-color: rgba(255, 0, 0, 0.384);
+	padding: 0.2em;
+	border: 2px solid red;
 }

@@ -15,10 +15,9 @@ var tabela = document.querySelector("#tabela-pacientes");
 // adiciona a questão do 2x cliques usando como parametro da função o evento clicado
 tabela.addEventListener("dblclick", function (event) {
     // separa e informa que é pra remover só o clicado na tabela pai do evento
-    var alvoEvento = event.target;
-    var paiDoAlvo = alvoEvento.parentNode;
-    paiDoAlvo.remove();
+    event.target.parentNode.classList.add("sumir-devagar");
 
+    setTimeout(function () {
+        event.target.parentNode.remove();
+    }, 1500)
 });
-
-

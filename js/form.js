@@ -11,9 +11,6 @@ botaoAdicionar.addEventListener("click", function (event) {
     //pegando os valores do HTML usando a função
     var paciente = extrairPaciente(form);
 
-    // criando a tr na tabela do HTML e colocando as tds
-    var pacienteTr = montaTr(paciente);
-
     // criando variavel para mostrar erro pro usuario
     var erros = validaPacientes(paciente);
     console.log(erros);
@@ -22,11 +19,8 @@ botaoAdicionar.addEventListener("click", function (event) {
         return;
     }
 
-    //criando a variavel tabela que representa a tabela do HTML  
-    var tabela = document.querySelector("#tabela-pacientes");
-
-    // colocando a tr que criamos dentro da tabela do HTML
-    tabela.appendChild(pacienteTr);
+    // Chamando função que add Pacientes na Tabela
+    adicionaPacienteNaTabela(paciente);
 
     // limpando o formulario após add
     form.reset();
@@ -90,6 +84,16 @@ function montaTd(dado, classe) {
     td.classList.add(classe);
 
     return td;
+}
+
+// função para add os pacientes da Api na tabela
+function adicionaPacienteNaTabela(paciente) {
+    // criando a tr na tabela do HTML e colocando as tds
+    var pacienteTr = montaTr(paciente);
+    //criando a variavel tabela que representa a tabela do HTML  
+    var tabela = document.querySelector("#tabela-pacientes");
+    // colocando a tr que criamos dentro da tabela do HTML
+    tabela.appendChild(pacienteTr);
 }
 
 /* Área de Validações */
